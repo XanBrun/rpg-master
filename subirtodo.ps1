@@ -1,7 +1,15 @@
 # -----------------------------------------
 # Script PowerShell para subir todo a GitHub
-# Incluye archivos ocultos
+# Incluye archivos ocultos y autor del commit
 # -----------------------------------------
+
+# Pedir información del autor
+$AuthorName = Read-Host "Ingresa tu nombre para Git"
+$AuthorEmail = Read-Host "Ingresa tu correo para Git"
+
+# Configurar Git localmente (solo para este repositorio)
+git config user.name "$AuthorName"
+git config user.email "$AuthorEmail"
 
 $CommitMessage = "Subiendo todos los archivos, incluidos ocultos"
 
@@ -29,10 +37,10 @@ if ($ignored) {
 # Agregar todos los archivos (incluidos ocultos)
 git add -A
 
-# Crear commit
+# Crear commit con autor configurado
 git commit -m "$CommitMessage"
 
 # Hacer push al repositorio
 git push -u origin main
 
-Write-Host "✅ Todos los archivos (incluidos ocultos) se subieron correctamente."
+Write-Host "✅ Todos los archivos (incluidos ocultos) se subieron correctamente como $AuthorName <$AuthorEmail>."
