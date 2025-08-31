@@ -3,17 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO / Social -->
     <meta property="og:title" content="RPG Master" />
     <meta property="og:description" content="Local multiplayer RPG manager for tabletop gaming" />
-    <meta
-      property="og:image"
-      content="https://mocha-cdn.com/og.png"
-      type="image/png"
-    />
-    <meta
-      property="og:url"
-      content="https://rpgmaster.app"
-    />
+    <meta property="og:image" content="https://mocha-cdn.com/og.png" type="image/png" />
+    <meta property="og:url" content="https://rpgmaster.app" />
     <meta property="og:type" content="website" />
     <meta property="og:author" content="RPG Master" />
     <meta property="og:site_name" content="RPG Master" />
@@ -21,27 +16,34 @@
     <meta property="twitter:site" content="@rpgmaster" />
     <meta property="twitter:title" content="RPG Master" />
     <meta property="twitter:description" content="Local multiplayer RPG manager for tabletop gaming" />
-    <meta
-      property="twitter:image"
-      content="https://mocha-cdn.com/og.png"
-      type="image/png"
-    />
-    <link
-      rel="shortcut icon"
-      href="https://mocha-cdn.com/favicon.ico"
-      type="image/x-icon"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="https://mocha-cdn.com/apple-touch-icon.png"
-      type="image/png"
-    />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta property="twitter:image" content="https://mocha-cdn.com/og.png" type="image/png" />
+
+    <!-- Favicon & Apple -->
+    <link rel="shortcut icon" href="https://mocha-cdn.com/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://mocha-cdn.com/apple-touch-icon.png" type="image/png" />
+
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <!-- PWA manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1d4ed8" />
+
     <title>RPG Master</title>
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- React entry -->
     <script type="module" src="/src/react-app/main.tsx"></script>
+
+    <!-- Service Worker registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+          .then(() => console.log("✅ Service Worker registrado"))
+          .catch(err => console.error("❌ Error registrando SW", err));
+      }
+    </script>
   </body>
 </html>
